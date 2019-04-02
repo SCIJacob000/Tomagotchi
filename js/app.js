@@ -10,33 +10,58 @@ class Tomagatchi{
 
 const game = {
 	time: 0,
-	feed (){
-		if(toma1.hung === 10){
-			$('h3').html(`${toma1.name} is full!`)//alert the player tomagatchi is full!
+	intervalId: null,
+	currentPet: null,
+	growOld (){
+		if(this.time % 100 === 0){
+			this.currentPet.age++
 		}
-		else if(1 <= toma1.hung < 10){
-			toma1.hung = toma1.hung - 2
+	},
+	imHungary(){
+		if(this.time % 10 === 0){
+			this.currentPet.hung++
+		}
+	},
+	boring(){
+		if(this.time %  50 === 0){
+			this.currentPet.bored++
+		}	
+	},
+	getSleepy(){
+		if(this.time % 10 === 0){
+		this.currentPet.sleep--
+		}
+	},
+	feed (){
+		if(this.currentPet.hung === 1){
+			$('h3').html(`${this.currentPet.name} is full!`)//alert the player tomagatchi is full!
+		}
+		else if(2 <= this.currentPet.hung < 10){
+			this.currentPet.hung = this.currentPet.hung - 2
 			// put food on the screen for a min then make it go away and alert the player their tomagatchi has eaten food!
 		}
-		else if (toma1.hung === 9){
-			toma1.hung = toma1.hung -1
+		else{
+			//run end game function
 		}
 	},
 	bedTime (){
-		if(toma1.sleep === 10){
+		if(this.currentPet.sleep === 10){
 			//alert the player tomagatchi is full!
 		}
-		else if(1 <= toma1.sleep < 1){
-			toma1.sleep = 10
+		else if(1 <= this.currentPet.sleep < 1){
+			this.currentPet.sleep = 10
 			//make the tomagatchi dissapear for a short time then alert the player the tomagatchi has rested and feels refreshed!
+		}
+		else{
+			//run end game function
 		}
 	},
 	play (){
-		if(toma1.bored === 10){
-			//alert the player tomagatchi is full!
+		if(this.currentPet.bored === 10){
+			//alert the player tomagatchi is having fun
 		}
-		else if(2<=toma1.bored < 10){
-			toma1.bored = toma1.bored - 2
+		else if(2<=this.currentPet.bored < 10){
+			this.currentPet.bored = this.currentPet.bored - 2
 			// put food on the screen for a min then make it go away and alert the player their tomagatchi has eaten food!
 		}
 		else{
@@ -44,38 +69,30 @@ const game = {
 		}
 	},
 	evolve(){
-		if(toma1.age === 5){
+		if(this.currentPet.age === 5){
 			//change the character to its next evolution
 		}
-	
 	},	
-	timer(){
-		this.time = setInterval(() =>{
-			this.time++
-		//create a timer that can be started in the start game function that counts up and set al the other values to either decrease or increase based on that number at a certain rate! 
-		if(time % 5000 === 0){
-			//when this.time hits some number age goes up
-		}
-		else if(time % 100 === 0){
-			//when this.time hits some number hunger goes up
-		}
-		else if(time % 50 === 0){
-			//when the this.time hits some number the boredom goes up
-		}
-		else if(time % 25 === 0){
-			//when the this.time hits some number the sleepyness goes up
-		}
-		},1000)
-
-	},
 	startGame(){
+		let toma1 = new Tomagatchi(1,10,1,1,"")
+		this.currentPet = toma1
+		this.intervalId = setInterval( 
+			() =>{
+				this.time++ 
+				this.growOld();
+				this.imHungary();
+				this.boring();
+				this.getSleepy();
+				//put toma on screen
+				//toma1.name = //user input
+			},
+			1000
+		)
+	},
+	endGame(){
 		
-		//start the timer
-		//put toma on screen
-		//set input to toma1.name
 	}
-}
-		let toma1 = new Tomagatchi(1,5,6,3,"boy")
+}	
 
 $('#start').on('click', ()=>{
 	game.startGame();
@@ -92,10 +109,6 @@ $('#bed').on('click', ()=>{
 	game.bedTime();
 
  })
-game.startGame();
-console.log(game.time);
-
-
 //need an end game function that tells the user how their last toma died as well as tells them to start a new game!
 
 
