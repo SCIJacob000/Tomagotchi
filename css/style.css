@@ -5,7 +5,6 @@ body{
 	background-color: black;
 }
 h1{
-	color: white;
 	font-size: 60px;
 	font-weight: bold;
 	text-decoration: underline;
@@ -17,10 +16,14 @@ div{
 	height:500px;
 	width: 400px;
 	border-radius: 20px;
-	margin: 0 auto;
+	margin: 20px auto;
 	display: flex; 
 	justify-content: center;
 	flex-direction: column;
+	
+	
+
+	
 
 }
 nav{
@@ -34,12 +37,13 @@ nav{
 	margin:0 auto;
 }
 h2{	
-	border-radius: 25px;
 	background-color: black;
-	height: 400px;
+	height: 320px;
 	width: 350px;
 	margin: 0 auto;
-	margin-bottom: 30px;
+	margin-bottom: 0px;
+	display:flex;
+	justify-content: flex-end;
 }
 #start{
 	display:block;
@@ -55,7 +59,25 @@ h2{
 	background-color: lightblue;
 }
 h3{
-	background-color: #0E3148
+	background-color: #0E3148;
+	height: 80px;
+	width: 350px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+	overflow-wrap: break-word;
+	
+}
+#instructions{
+	text-align: center;
+	height:100px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #9932CC;
+	width: 500px;
+	margin-bottom: 30px;
 }
 
 
