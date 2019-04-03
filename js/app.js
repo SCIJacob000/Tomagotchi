@@ -12,8 +12,16 @@ const game = {
 	time: 0,
 	intervalId: null,
 	currentPet: null,
+	animate(){
+		if(this.time % 3===0){
+		$('#toma1').css({"margin-right": "40px"})
+		}
+		else if (this.time % 3 !==0){
+		$('#toma1').css({"margin-right": "0px"})
+		}
+	},
 	displayHealth(){
-		$('h3').html(`${this.currentPet.name} Hunger:${this.currentPet.hung} Sleepy:${this.currentPet.sleep} Boredom:${this.currentPet.bored} Age:${this.currentPet.age}`)
+		$('h3').html(`${this.currentPet.name}----Game Time:${this.time} Hunger:${this.currentPet.hung} Sleepy:${this.currentPet.sleep} Boredom:${this.currentPet.bored} Age:${this.currentPet.age}`)
 	},
 	evolve(){
 		if(this.currentPet.age === 7){
@@ -78,13 +86,14 @@ const game = {
 	},	
 	startGame(){
 		let toma1 = new Tomagatchi(1,10,1,0,"")
-		$('#screen').append('<image src=https://vignette.wikia.nocookie.net/tamagotchi/images/c/c3/01.gif/revision/latest?cb=20090707084835">')
 		this.currentPet = toma1
 		toma1.name = $('#input-box').val();
+		$('#screen').append('<image id="toma1" src=https://vignette.wikia.nocookie.net/tamagotchi/images/c/c3/01.gif/revision/latest?cb=20090707084835">')
 		this.intervalId = setInterval( 
 			() =>{
-				this.displayHealth();
 				this.time++ 
+				this.animate();
+				this.displayHealth();
 				this.growOld();
 				this.imHungary();
 				this.boring();
