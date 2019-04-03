@@ -48,6 +48,7 @@ h2{
 	margin-bottom: 50px;
 	background-color: #FFA500;
 	border-radius: 5px;
+	font-size: 30px;
 }
 #feed, #play, #bed{
 	border-radius: 3px;
@@ -79,7 +80,6 @@ input{
 	margin: 10px auto;
 	height:20px;
 	width :80px;
-
 }
 
 

@@ -30,7 +30,7 @@ const game = {
 		}
 	},
 	growOld (){
-		if(this.time % 60 === 0){
+		if(this.time % 2 === 0){
 			this.currentPet.age++
 		}
 	},
@@ -53,27 +53,27 @@ const game = {
 		if(this.currentPet.hung <= 1){
 			$('h3').html(`${this.currentPet.name} is full!`)
 		}
-		else if(2 <= this.currentPet.hung < 10){
+		else if(2 <= this.currentPet.hung && this.currentPet.hung < 10){
 			this.currentPet.hung = this.currentPet.hung - 2
 			
 		}
 	},
 	bedTime (){
-		if(0 <= this.currentPet.sleep < 10){ // i played with the values in this line
+		if(1 <= this.currentPet.sleep && this.currentPet.sleep < 10){ 
 			this.currentPet.sleep = this.currentPet.sleep - this.currentPet.sleep
 	
 		}
-		// else{
-		// 	$('h3').html(`${this.currentPet.name} is well rested!`)
-		// }
+		else{
+			$('h3').html(`${this.currentPet.name} is well rested!`)
+		}
 	},
 	play (){
-		if(1 <= this.currentPet.bored < 10){// i played with the values in this line 
+		if(1 <= this.currentPet.bored  && this.currentPet.bored < 10){
 			this.currentPet.bored = this.currentPet.bored - 1
 		}
-		// else{
-		// 	$('h3').html("Woooooopiieeeeee!")
-		// }
+		else{
+			$('h3').html("Woooooopiieeeeee!")
+		}
 	},	
 	startGame(){
 			let toma1 = new Tomagatchi(0,0,0,0,"")
@@ -128,7 +128,3 @@ $('#bed').on('click', ()=>{
 	game.bedTime();
 
  })
-// The two places that are commented out i cannot seem to force to work. i have played with the numbers in the conditions for
-// the if statements to try and make those messages appear and not allow the player to "play with their pet too much".
-// not essentioal to the game but def made it more fun to get those messages so if you can point me in the right direction to make it work that would be awesome!
-
