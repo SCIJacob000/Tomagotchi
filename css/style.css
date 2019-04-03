@@ -20,11 +20,6 @@ div{
 	display: flex; 
 	justify-content: center;
 	flex-direction: column;
-	
-	
-
-	
-
 }
 nav{
 	margin-bottom: 30px;
@@ -78,6 +73,13 @@ h3{
 	color: #9932CC;
 	width: 500px;
 	margin-bottom: 30px;
+}
+input{
+	display: block;
+	margin: 10px auto;
+	height:20px;
+	width :80px;
+
 }
 
 
